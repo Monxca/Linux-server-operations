@@ -1,0 +1,12 @@
+[Unit]
+Description=Run Linux server health check every 5 minutes
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=5min
+AccuracySec=10s
+Unit=server-health-check.service
+Persistent=true
+
+[Install]
+WantedBy=timers.target

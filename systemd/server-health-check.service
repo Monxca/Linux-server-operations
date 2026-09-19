@@ -1,0 +1,7 @@
+[Unit]
+Description=Run Linux Server Health Check
+
+[Service]
+Type=oneshot
+User=monica
+ExecStart=/home/monica/Cloudsupport/projects/linux-server-operations/scripts/server-health-check.sh
