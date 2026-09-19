@@ -26,11 +26,13 @@ echo "Linux Server Health Check"
 echo "Time: $CURRENT_TIME"
 echo "======================================"
 
-if systemctl is-active --quiet "$SERVICE_NAME"
+SERVICE_STATE=$(systemctl is-active "$SERVICE_NAME" 2>/dev/null || true)
+
+if [ "$SERVICE_STATE" = "active" ]
 then
-    echo "[OK] $SERVICE_NAME service is active"
+    echo "[OK] $SERVICE_NAME service state is $SERVICE_STATE"
 else
-    echo "[CRITICAL] $SERVICE_NAME service is inactive"
+    echo "[CRITICAL] $SERVICE_NAME service state is $SERVICE_STATE"
     OVERALL_STATUS=1
 fi
 
